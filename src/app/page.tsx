@@ -9,7 +9,7 @@ export default function Home() {
     <Layout>
       <section className="relative h-[600px] md:h-[800px]">
         <Image
-          src="/images/hero/placeholder.svg"
+          src="/images/hero/hero-image.jpg"
           alt="Hero Image"
           fill
           className="object-cover"
