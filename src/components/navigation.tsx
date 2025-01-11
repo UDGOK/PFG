@@ -122,6 +122,13 @@ export default function Navigation() {
             >
               Careers
             </Link>
+
+            <Link
+              href="/contact"
+              className="text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+            >
+              Contact
+            </Link>
           </div>
         </div>
       </div>
@@ -191,6 +198,13 @@ export default function Navigation() {
             className="text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
           >
             Careers
+          </Link>
+
+          <Link
+            href="/contact"
+            className="text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Contact
           </Link>
         </div>
       </div>
