@@ -61,6 +61,29 @@ export default function Home() {
         </div>
       </section>
 
+      {/* About Section */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <div className="bg-white p-8 rounded-lg shadow-md">
+            <h2 className="text-3xl font-bold text-center mb-8">About Perfect Food & Gas</h2>
+            <div className="space-y-6 text-lg text-gray-700">
+              <p>
+                Perfect Food & Gas, a rapidly expanding convenience store and gas station chain, is making significant strides in the Oklahoma market, particularly in Tulsa. With over eight established locations, Perfect Food & Gas has become a trusted name for quality fuel and a wide range of convenience products.
+              </p>
+              <p>
+                The company is committed to providing exceptional customer service and a seamless shopping experience, which has contributed to its growing popularity among locals.
+              </p>
+              <p>
+                As part of its expansion strategy, Perfect Food & Gas is excited to announce the opening of a new gas station in Bixby, Oklahoma. This new location will offer the same high standards of service and product variety that customers have come to expect. Perfect Food & Gas is dedicated to meeting the needs of its customers by offering competitive fuel prices, a clean and welcoming environment, and a diverse selection of snacks, beverages, and essential items.
+              </p>
+              <p>
+                Whether you're fueling up for a road trip or just stopping by for a quick snack, Perfect Food & Gas is your go-to destination in Tulsa and beyond. Keep an eye out for more locations as the company continues to grow and serve the community with excellence.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Promotions Section */}
       <section className="py-16">
         <div className="container mx-auto px-4">
