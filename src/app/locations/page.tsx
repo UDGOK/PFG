@@ -25,7 +25,7 @@ const LOCATIONS: Location[] = [
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.1331, lng: -95.9685 },
     phone: "Tel: 918-742-0322",
-    image: "/images/locations/harvard.jpg"
+    image: "https://raw.githubusercontent.com/UDGOK/PFG/main/public/images/hero/harvard.jpg"
   },
   {
     name: "Perfect Food & Gas",
