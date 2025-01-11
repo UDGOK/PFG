@@ -1,7 +1,7 @@
 "use client"
 
-import Layout from "@/components/layout"
 import { useEffect, useState } from "react"
+import Layout from "@/components/layout"
 
 interface Coordinates {
   lat: number
@@ -13,28 +13,56 @@ interface Location {
   address: string
   hours: string
   coords: Coordinates
+  phone: string
+  image: string
   distance?: number
 }
 
-// Coordinates for our locations
 const LOCATIONS: Location[] = [
   {
-    name: "Downtown Location",
-    address: "123 Main St, City, State",
-    hours: "Open 24/7",
-    coords: { lat: 40.7128, lng: -74.0060 } // Example NYC coordinates
+    name: "Perfect Food & Gas",
+    address: "1507 S Harvard Ave, Tulsa, OK 74112",
+    hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
+    coords: { lat: 36.1331, lng: -95.9685 },
+    phone: "Tel: 918-742-0322",
+    image: "/images/locations/harvard.jpg"
   },
   {
-    name: "Uptown Location",
-    address: "456 Elm St, City, State",
-    hours: "6am - 11pm",
-    coords: { lat: 40.7831, lng: -73.9712 } // Example NYC coordinates
+    name: "Perfect Food & Gas",
+    address: "8102 S Sheridan Rd, Tulsa, OK 74133",
+    hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
+    coords: { lat: 36.0486, lng: -95.8885 },
+    phone: "Tel: 918-499-1562",
+    image: "/images/locations/sheridan.jpg"
+  },
+  {
+    name: "Perfect Food & Gas",
+    address: "7675 E 51st St, Tulsa, OK 74145",
+    hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
+    coords: { lat: 36.0897, lng: -95.8881 },
+    phone: "Tel: 918-619-6538",
+    image: "/images/locations/51st.jpg"
+  },
+  {
+    name: "Perfect Food & Gas",
+    address: "215 N Garnett Rd, Tulsa, OK 74116",
+    hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
+    coords: { lat: 36.2219, lng: -95.8314 },
+    phone: "Tel: 918-779-7373",
+    image: "/images/locations/garnett.jpg"
+  },
+  {
+    name: "Perfect Food & Gas",
+    address: "14495 East 51st Street South, Tulsa, OK 74134",
+    hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
+    coords: { lat: 36.0678, lng: -95.8889 },
+    phone: "Tel: 918-367-2382",
+    image: "/images/locations/51st-south.jpg"
   }
 ]
 
-// Helper function to calculate distance between two coordinates
 function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
-  const R = 6371 // Radius of the earth in km
+  const R = 6371
   const dLat = (lat2 - lat1) * (Math.PI / 180)
   const dLon = (lon2 - lon1) * (Math.PI / 180)
   const a =
@@ -44,7 +72,8 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
       Math.sin(dLon / 2) *
       Math.sin(dLon / 2)
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a))
-  return R * c // Distance in km
+  const kmDistance = R * c
+  return kmDistance * 0.621371
 }
 
 export default function LocationsPage() {
@@ -63,7 +92,6 @@ export default function LocationsPage() {
           }
           setUserLocation(userCoords)
           
-          // Calculate distances and sort locations
           const locationsWithDistance = LOCATIONS.map(location => ({
             ...location,
             distance: calculateDistance(
@@ -80,11 +108,10 @@ export default function LocationsPage() {
           setLoading(false)
         },
         (error: GeolocationPositionError) => {
-          // Error parameter is required by the geolocation API
-          if (error) {} // Dummy usage to satisfy ESLint
+          if (error) {}
           setErrorMessage('Unable to retrieve your location. Please enable location services.')
           setLoading(false)
-          setSortedLocations(LOCATIONS) // Show locations without sorting
+          setSortedLocations(LOCATIONS)
         },
         {
           enableHighAccuracy: true,
@@ -110,41 +137,52 @@ export default function LocationsPage() {
           </div>
         )}
 
-        {errorMessage ? (
+        {errorMessage && (
           <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mb-8" role="alert">
             <p>{errorMessage}</p>
           </div>
-        ) : null}
+        )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {sortedLocations.map((location, index) => (
-            <div key={index} className="bg-white shadow-md rounded-lg p-6">
-              <h2 className="text-xl font-bold mb-2">{location.name}</h2>
-              <p className="text-gray-600 mb-2">{location.address}</p>
-              <p className="text-gray-600 mb-2">{location.hours}</p>
-              
-              {location.distance && (
-                <p className="text-gray-600 mb-4">
-                  {location.distance.toFixed(1)} km away
-                </p>
-              )}
+            <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden">
+              <div className="relative h-48 w-full">
+                <img 
+                  src={location.image}
+                  alt={location.name}
+                  className="absolute inset-0 w-full h-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="p-6">
+                <h2 className="text-xl font-bold mb-2">{location.name}</h2>
+                <p className="text-gray-600 mb-2">{location.address}</p>
+                <p className="text-gray-600 mb-2">{location.phone}</p>
+                <p className="text-gray-600 mb-2">{location.hours}</p>
 
-              <button
-                className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
-                onClick={() => {
-                  window.open(
-                    `https://www.google.com/maps/dir/?api=1&destination=${location.coords.lat},${location.coords.lng}` +
-                    (userLocation ? `&origin=${userLocation.lat},${userLocation.lng}` : ''),
-                    "_blank"
-                  )
-                }}
-              >
-                Get Directions
-              </button>
+                {location.distance && (
+                  <p className="text-gray-600 mb-4">
+                    {location.distance.toFixed(1)} miles away
+                  </p>
+                )}
+
+                <button
+                  className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700"
+                  onClick={() => {
+                    window.open(
+                      `https://www.google.com/maps/dir/?api=1&destination=${location.coords.lat},${location.coords.lng}` +
+                      (userLocation ? `&origin=${userLocation.lat},${userLocation.lng}` : ''),
+                      "_blank"
+                    )
+                  }}
+                >
+                  Get Directions
+                </button>
+              </div>
             </div>
           ))}
         </div>
       </div>
     </Layout>
-  );
+  )
 }
