@@ -77,7 +77,7 @@ export default function Home() {
                 As part of its expansion strategy, Perfect Food & Gas is excited to announce the opening of a new gas station in Bixby, Oklahoma. This new location will offer the same high standards of service and product variety that customers have come to expect. Perfect Food & Gas is dedicated to meeting the needs of its customers by offering competitive fuel prices, a clean and welcoming environment, and a diverse selection of snacks, beverages, and essential items.
               </p>
               <p>
-                Whether you're fueling up for a road trip or just stopping by for a quick snack, Perfect Food & Gas is your go-to destination in Tulsa and beyond. Keep an eye out for more locations as the company continues to grow and serve the community with excellence.
+                Whether you&apos;re fueling up for a road trip or just stopping by for a quick snack, Perfect Food & Gas is your go-to destination in Tulsa and beyond. Keep an eye out for more locations as the company continues to grow and serve the community with excellence.
               </p>
             </div>
           </div>

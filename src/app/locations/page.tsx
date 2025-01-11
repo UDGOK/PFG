@@ -1,6 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
+import Image from "next/image"
 import Layout from "@/components/layout"
 
 interface Coordinates {
@@ -147,11 +148,13 @@ export default function LocationsPage() {
           {sortedLocations.map((location, index) => (
             <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden">
               <div className="relative h-48 w-full">
-                <img 
+                <Image
                   src={location.image}
                   alt={location.name}
-                  className="absolute inset-0 w-full h-full object-cover"
-                  loading="lazy"
+                  className="object-cover"
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={index === 0}
                 />
               </div>
               <div className="p-6">
