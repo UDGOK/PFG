@@ -5,6 +5,7 @@ import { useState } from "react"
 
 export default function Navigation() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const toggleDropdown = (dropdown: string) => {
     setActiveDropdown(current => current === dropdown ? null : dropdown)
@@ -12,6 +13,10 @@ export default function Navigation() {
 
   const closeAllDropdowns = () => {
     setActiveDropdown(null)
+  }
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
   return (
@@ -23,7 +28,37 @@ export default function Navigation() {
               Perfect Food &amp; Gas
             </Link>
           </div>
-          <div className="flex items-center space-x-8" onMouseLeave={closeAllDropdowns}>
+
+          {/* Mobile Menu Button */}
+          <div className="flex items-center md:hidden">
+            <button
+              onClick={toggleMobileMenu}
+              type="button"
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-red-600 focus:outline-none"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open main menu</span>
+              <svg
+                className="block h-6 w-6"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            </button>
+          </div>
+
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8" onMouseLeave={closeAllDropdowns}>
             <div className="relative group">
               <button 
                 onClick={() => toggleDropdown('story')}
@@ -88,6 +123,75 @@ export default function Navigation() {
               Careers
             </Link>
           </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          <div className="relative">
+            <button 
+              onClick={() => toggleDropdown('story')}
+              className="w-full text-left text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Our Story
+            </button>
+            {activeDropdown === 'story' && (
+              <div className="pl-4">
+                <Link href="/our-story/history" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+                  History
+                </Link>
+                <Link href="/leadership" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+                  Leadership
+                </Link>
+              </div>
+            )}
+          </div>
+
+          <div className="relative">
+            <button 
+              onClick={() => toggleDropdown('locations')}
+              className="w-full text-left text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Locations
+            </button>
+            {activeDropdown === 'locations' && (
+              <div className="pl-4">
+                <Link href="/locations/find-store" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+                  Find a Store
+                </Link>
+                <Link href="/locations/new-stores" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+                  New Stores
+                </Link>
+              </div>
+            )}
+          </div>
+
+          <div className="relative">
+            <button 
+              onClick={() => toggleDropdown('rewards')}
+              className="w-full text-left text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Rewards
+            </button>
+            {activeDropdown === 'rewards' && (
+              <div className="pl-4">
+                <Link href="/rewards/sign-up" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+                  Sign Up
+                </Link>
+                <Link href="/rewards/benefits" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+                  Benefits
+                </Link>
+              </div>
+            )}
+          </div>
+
+          <Link
+            href="/careers"
+            className="text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
+          >
+            Careers
+          </Link>
         </div>
       </div>
     </nav>
