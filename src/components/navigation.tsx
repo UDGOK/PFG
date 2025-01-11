@@ -4,100 +4,92 @@ import Link from "next/link"
 import { useState } from "react"
 
 export default function Navigation() {
-  const [isOurStoryOpen, setIsOurStoryOpen] = useState(false)
-  const [isRewardsOpen, setIsRewardsOpen] = useState(false)
-  const [isCareersOpen, setIsCareersOpen] = useState(false)
-  const [isSavingsOpen, setIsSavingsOpen] = useState(false)
-  const [isCommunityOpen, setIsCommunityOpen] = useState(false)
-  const [isNutritionOpen, setIsNutritionOpen] = useState(false)
-  const [isShopOpen, setIsShopOpen] = useState(false)
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null)
 
-  interface DropdownItem {
-    href: string
-    label: string
+  const toggleDropdown = (dropdown: string) => {
+    setActiveDropdown(current => current === dropdown ? null : dropdown)
   }
 
-  const createDropdown = (
-    isOpen: boolean,
-    setIsOpen: (value: boolean) => void,
-    title: string,
-    items: DropdownItem[]
-  ) => (
-    <div
-      className="relative inline-block"
-      onMouseEnter={() => setIsOpen(true)}
-      onMouseLeave={() => setIsOpen(false)}
-    >
-      <Link
-        href="#"
-        className="hover:text-primary-foreground/80 transition-colors"
-      >
-        {title}
-      </Link>
-      <div
-        className={`absolute top-full left-0 mt-4 w-48 bg-white rounded-lg shadow-lg overflow-hidden transition-all duration-300 z-[60] ${
-          isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
-        }`}
-        aria-hidden={!isOpen}
-        aria-expanded={isOpen}
-        role="menu"
-      >
-        {items.map((item, index) => (
-          <Link
-            key={index}
-            href={item.href}
-            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors"
-          >
-            {item.label}
-          </Link>
-        ))}
-      </div>
-    </div>
-  )
+  const closeAllDropdowns = () => {
+    setActiveDropdown(null)
+  }
 
   return (
-    <nav className="space-x-4 relative z-[60] overflow-visible">
-      {createDropdown(isOurStoryOpen, setIsOurStoryOpen, "Our Story", [
-        { href: "/our-story/history", label: "History" },
-        { href: "/our-story/leadership", label: "Leadership" },
-        { href: "/our-story/values", label: "Values" }
-      ])}
-      
-      {createDropdown(isRewardsOpen, setIsRewardsOpen, "Kwik Rewards", [
-        { href: "/rewards/join", label: "Join Rewards" },
-        { href: "/rewards/benefits", label: "Benefits" },
-        { href: "/rewards/partners", label: "Partners" }
-      ])}
-      
-      {createDropdown(isCareersOpen, setIsCareersOpen, "Careers", [
-        { href: "/careers/opportunities", label: "Opportunities" },
-        { href: "/careers/benefits", label: "Benefits" },
-        { href: "/careers/apply", label: "Apply Now" }
-      ])}
-      
-      {createDropdown(isSavingsOpen, setIsSavingsOpen, "Savings", [
-        { href: "/savings/weekly-specials", label: "Weekly Specials" },
-        { href: "/savings/coupons", label: "Coupons" },
-        { href: "/savings/fuel-rewards", label: "Fuel Rewards" }
-      ])}
-      
-      {createDropdown(isCommunityOpen, setIsCommunityOpen, "Community", [
-        { href: "/community/events", label: "Events" },
-        { href: "/community/donations", label: "Donations" },
-        { href: "/community/partnerships", label: "Partnerships" }
-      ])}
-      
-      {createDropdown(isNutritionOpen, setIsNutritionOpen, "Nutrition", [
-        { href: "/nutrition/healthy-choices", label: "Healthy Choices" },
-        { href: "/nutrition/allergens", label: "Allergen Info" },
-        { href: "/nutrition/nutrition-facts", label: "Nutrition Facts" }
-      ])}
-      
-      {createDropdown(isShopOpen, setIsShopOpen, "Shop", [
-        { href: "/shop/groceries", label: "Groceries" },
-        { href: "/shop/fuel", label: "Fuel" },
-        { href: "/shop/merchandise", label: "Merchandise" }
-      ])}
+    <nav className="bg-white shadow-sm fixed top-12 left-0 right-0 z-[50]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16">
+          <div className="flex items-center">
+            <Link href="/" className="text-2xl font-bold text-red-600">
+              Perfect Food &amp; Gas
+            </Link>
+          </div>
+          <div className="flex items-center space-x-8" onMouseLeave={closeAllDropdowns}>
+            <div className="relative group">
+              <button 
+                onClick={() => toggleDropdown('story')}
+                className={`text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform ${activeDropdown === 'story' ? 'text-red-600' : ''}`}
+              >
+                Our Story
+              </button>
+              {activeDropdown === 'story' && (
+                <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1">
+                  <Link href="/our-story/history" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    History
+                  </Link>
+                  <Link href="/our-story/leadership" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Leadership
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <div className="relative group">
+              <button 
+                onClick={() => toggleDropdown('locations')}
+                className={`text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform ${activeDropdown === 'locations' ? 'text-red-600' : ''}`}
+              >
+                Locations
+              </button>
+              {activeDropdown === 'locations' && (
+                <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1">
+                  <Link href="/locations/find-store" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Find a Store
+                  </Link>
+                  <Link href="/locations/new-stores" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    New Stores
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <div className="relative group">
+              <button 
+                onClick={() => toggleDropdown('rewards')}
+                className={`text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform ${activeDropdown === 'rewards' ? 'text-red-600' : ''}`}
+              >
+                Rewards
+              </button>
+              {activeDropdown === 'rewards' && (
+                <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1">
+                  <Link href="/rewards/sign-up" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Sign Up
+                  </Link>
+                  <Link href="/rewards/benefits" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Benefits
+                  </Link>
+                </div>
+              )}
+            </div>
+
+            <Link
+              href="/careers"
+              className="text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+            >
+              Careers
+            </Link>
+          </div>
+        </div>
+      </div>
     </nav>
   )
 }
