@@ -87,7 +87,7 @@ export default function Navigation() {
               </button>
               {activeDropdown === 'locations' && (
                 <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1">
-                  <Link href="/locations/find-store" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <Link href="/locations" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Find a Store
                   </Link>
                   <Link href="/locations/new-stores" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
@@ -164,7 +164,7 @@ export default function Navigation() {
             </button>
             {activeDropdown === 'locations' && (
               <div className="pl-4">
-                <Link href="/locations/find-store" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+                <Link href="/locations" className="block px-3 py-2 text-gray-700 hover:text-red-600">
                   Find a Store
                 </Link>
                 <Link href="/locations/new-stores" className="block px-3 py-2 text-gray-700 hover:text-red-600">
