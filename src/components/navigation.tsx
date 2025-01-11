@@ -36,7 +36,7 @@ export default function Navigation() {
                   <Link href="/our-story/history" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     History
                   </Link>
-                  <Link href="/our-story/leadership" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                  <Link href="/leadership" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Leadership
                   </Link>
                 </div>
