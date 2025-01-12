@@ -10,7 +10,7 @@ export default function Footer() {
               <li><a href="/locations" className="hover:text-[#e51937] transition-colors duration-200">Locations</a></li>
               <li><a href="/careers" className="hover:text-[#e51937] transition-colors duration-200">Careers</a></li>
               <li><a href="/rewards" className="hover:text-[#e51937] transition-colors duration-200">Rewards</a></li>
-              <li><a href="/our-story" className="hover:text-[#e51937] transition-colors duration-200">Our Story</a></li>
+              <li><a href="/our-story/history" className="hover:text-[#e51937] transition-colors duration-200">Our Story</a></li>
             </ul>
           </div>
 
@@ -18,9 +18,9 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">Contact</h3>
             <ul className="space-y-2">
-              <li>Customer Service: 1-800-555-1234</li>
-              <li>Email: info@pfg.com</li>
-              <li>Corporate Office: 123 Main St, Anytown USA</li>
+              <li>Customer Service: 405-962-9394</li>
+              <li>Email: yuba@pfgstores.com</li>
+              <li>Corporate Office: 7675 E 51st St, Tulsa, 74145, OK</li>
             </ul>
           </div>
 
@@ -53,7 +53,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t-2 border-[#e51937] mt-12 pt-8 text-center">
-          <p className="text-sm text-gray-400">&amp;copy; {new Date().getFullYear()} PFG. All rights reserved.</p>
+          <p className="text-sm text-gray-400">&copy; {new Date().getFullYear()} PFG. All rights reserved.</p>
         </div>
       </div>
     </footer>

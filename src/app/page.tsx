@@ -52,16 +52,30 @@ export default function Home() {
                 className="w-full h-48 object-cover rounded-md"
                 style={{ height: 'auto' }}
               />
-              <h3 className="text-xl font-semibold mb-2">Fresh Bakery</h3>
+              <h3 className="text-xl font-semibold mb-2">New Kitchens</h3>
               <p className="text-gray-600">Daily baked goods made fresh</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="h-48 bg-gray-200 mb-4 rounded-md"></div>
+              <Image
+                src="/images/hero/sinclair-fuel.jpeg"
+                alt="Sinclair Fuel"
+                width={400}
+                height={400}
+                className="w-full h-48 object-cover rounded-md"
+                style={{ height: 'auto' }}
+              />
               <h3 className="text-xl font-semibold mb-2">Quality Fuel</h3>
               <p className="text-gray-600">Top-tier fuel at great prices</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="h-48 bg-gray-200 mb-4 rounded-md"></div>
+              <Image
+                src="/images/hero/inside-perfect-food.jpeg"
+                alt="Inside Perfect Food & Gas"
+                width={400}
+                height={400}
+                className="w-full h-48 object-cover rounded-md"
+                style={{ height: 'auto' }}
+              />
               <h3 className="text-xl font-semibold mb-2">Convenience</h3>
               <p className="text-gray-600">Everything you need on the go</p>
             </div>

@@ -76,20 +76,20 @@ export default function ContactPage() {
               
               <div className="space-y-4">
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900">Phone</h3>
-                  <p className="text-gray-600">(555) 123-4567</p>
+                  <h3 className="text-lg font-medium text-gray-900">Customer Service</h3>
+                  <p className="text-gray-600">405-962-9394</p>
                 </div>
 
                 <div>
                   <h3 className="text-lg font-medium text-gray-900">Email</h3>
-                  <p className="text-gray-600">info@perfectfoodandgas.com</p>
+                  <p className="text-gray-600">yuba@pfgstores.com</p>
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-medium text-gray-900">Address</h3>
+                  <h3 className="text-lg font-medium text-gray-900">Corporate Office</h3>
                   <p className="text-gray-600">
-                    123 Main Street<br />
-                    Anytown, USA 12345
+                    7675 E 51st St<br />
+                    Tulsa, OK 74145
                   </p>
                 </div>
               </div>
