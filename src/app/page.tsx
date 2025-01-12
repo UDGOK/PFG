@@ -4,7 +4,29 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import Layout from "@/components/layout"
+import { useState, useEffect } from "react"
+
 export default function Home() {
+  const [showCookieConsent, setShowCookieConsent] = useState(false)
+
+  useEffect(() => {
+    // Check if user has already made a choice
+    const cookieChoice = localStorage.getItem('cookieConsent')
+    if (!cookieChoice) {
+      setShowCookieConsent(true)
+    }
+  }, [])
+
+  const handleCookieChoice = (accept: boolean) => {
+    if (accept) {
+      // Here you would initialize your cookie-based tracking/analytics
+      localStorage.setItem('cookieConsent', 'accepted')
+    } else {
+      localStorage.setItem('cookieConsent', 'rejected')
+    }
+    setShowCookieConsent(false)
+  }
+
   return (
     <Layout>
       <section className="relative h-[600px] md:h-[800px]">
@@ -153,6 +175,34 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* Cookie Consent Banner */}
+      {showCookieConsent && (
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-lg p-4 z-50">
+          <div className="container mx-auto max-w-7xl flex flex-col md:flex-row items-center justify-between gap-4">
+            <div className="flex-1">
+              <h3 className="text-lg font-semibold mb-2">Cookie Settings</h3>
+              <p className="text-gray-600">
+                We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking &quot;Accept All&quot;, you consent to our use of cookies.
+              </p>
+            </div>
+            <div className="flex gap-4">
+              <button
+                onClick={() => handleCookieChoice(false)}
+                className="px-6 py-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors"
+              >
+                Reject All
+              </button>
+              <button
+                onClick={() => handleCookieChoice(true)}
+                className="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
+              >
+                Accept All
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </Layout>
   )
 }
