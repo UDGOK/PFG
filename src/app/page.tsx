@@ -77,7 +77,7 @@ export default function Home() {
           <div className="text-center text-white max-w-4xl px-4">
             <h2 className="text-5xl md:text-6xl font-bold mb-6">Welcome to Perfect Food & Gas</h2>
             <p className="text-xl md:text-2xl mb-12 max-w-2xl mx-auto">
-              Your one-stop shop for quality fuel and delicious food
+              Your trusted gas station in Tulsa, Sapulpa, and Bixby for quality fuel and fresh food
             </p>
             <div className="flex flex-col md:flex-row gap-4 justify-center">
               <Button
@@ -110,7 +110,7 @@ export default function Home() {
                 style={{ height: 'auto' }}
               />
               <h3 className="text-xl font-semibold mb-2">New Kitchens</h3>
-              <p className="text-gray-600">Daily baked goods made fresh</p>
+              <p className="text-gray-600">Fresh food daily at our Tulsa convenience stores</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <Image
@@ -122,7 +122,7 @@ export default function Home() {
                 style={{ height: 'auto' }}
               />
               <h3 className="text-xl font-semibold mb-2">Quality Fuel</h3>
-              <p className="text-gray-600">Top-tier fuel at great prices</p>
+              <p className="text-gray-600">Best gas prices in Tulsa and surrounding areas</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-md">
               <Image
@@ -134,7 +134,7 @@ export default function Home() {
                 style={{ height: 'auto' }}
               />
               <h3 className="text-xl font-semibold mb-2">Convenience</h3>
-              <p className="text-gray-600">Everything you need on the go</p>
+              <p className="text-gray-600">24/7 gas station near you in Tulsa, Sapulpa, and Bixby</p>
             </div>
           </div>
         </div>
@@ -154,14 +154,14 @@ export default function Home() {
             </h2>
             <div className="space-y-8 text-lg leading-relaxed">
               <p className="text-gray-800 font-light">
-                Perfect Food & Gas, a rapidly expanding convenience store and gas station chain, is making significant strides in the Oklahoma market, particularly in Tulsa. With over eight established locations, Perfect Food & Gas has become a trusted name for quality fuel and a wide range of convenience products.
+                Perfect Food & Gas, your local gas station in Tulsa, is a rapidly expanding convenience store and gas station chain making significant strides in the Oklahoma market. With over eight established locations, Perfect Food & Gas has become a trusted name for quality fuel and a wide range of convenience products.
               </p>
               <p className="text-gray-800 font-light">
-                The company is committed to providing exceptional customer service and a seamless shopping experience, which has contributed to its growing popularity among locals.
+                The company is committed to providing exceptional customer service and a seamless shopping experience at our convenience stores in Sapulpa, which has contributed to its growing popularity among locals.
               </p>
               <div className="border-l-4 border-red-600 pl-6 my-10">
                 <p className="text-xl text-gray-900 italic">
-                  As part of its expansion strategy, Perfect Food & Gas is excited to announce the opening of a new gas station in Bixby, Oklahoma. This new location will offer the same high standards of service and product variety that customers have come to expect.
+                  As part of our expansion strategy, Perfect Food & Gas is excited to bring our fresh food and gas to Bixby, Oklahoma. This new location will offer the same high standards of service and product variety that our customers in Tulsa and Sapulpa have come to expect.
                 </p>
               </div>
               <p className="text-gray-800 font-light">
