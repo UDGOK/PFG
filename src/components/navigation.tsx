@@ -21,16 +21,16 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="bg-white shadow-sm fixed top-12 left-0 right-0 z-[50] border-b-2 border-red-600">
+    <nav className="bg-white shadow-sm fixed top-24 left-0 right-0 z-[50]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
+        <div className="flex justify-between h-16 border-b-2 border-red-600">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center h-16">
+            <Link href="/" className="flex items-center h-20 -mt-2">
               <Image
                 src="/pfgstores-new-logo.jpg"
                 alt="PFG Stores Logo"
-                width={200}
-                height={64}
+                width={240}
+                height={80}
                 className="h-full w-auto object-contain"
               />
             </Link>

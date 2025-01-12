@@ -64,7 +64,7 @@ export default function Home() {
 
   return (
     <Layout>
-      <section className="relative h-[600px] md:h-[800px]">
+      <section className="relative h-[500px] md:h-[600px]">
         <video
           src="/videos/people-pump-gas.mp4"
           className="object-cover w-full h-full"

@@ -28,9 +28,30 @@ export default function Footer() {
           <div>
             <h3 className="text-lg font-bold mb-4">Legal</h3>
             <ul className="space-y-2">
-              <li><a href="/privacy-policy" className="hover:text-[#e51937] transition-colors duration-200">Privacy Policy</a></li>
-              <li><a href="/terms-of-use" className="hover:text-[#e51937] transition-colors duration-200">Terms of Use</a></li>
-              <li><a href="/accessibility" className="hover:text-[#e51937] transition-colors duration-200">Accessibility</a></li>
+              <li>
+                <a href="/privacy-policy" className="hover:text-[#e51937] transition-colors duration-200 flex items-center space-x-1">
+                  <span>Privacy Policy</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="/terms-of-use" className="hover:text-[#e51937] transition-colors duration-200 flex items-center space-x-1">
+                  <span>Terms of Use</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="/accessibility" className="hover:text-[#e51937] transition-colors duration-200 flex items-center space-x-1">
+                  <span>Accessibility</span>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -51,15 +72,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Legal */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li><a href="/privacy" className="hover:text-gray-400">Privacy Policy</a></li>
-              <li><a href="/terms" className="hover:text-gray-400">Terms of Use</a></li>
-              <li><a href="/accessibility" className="hover:text-gray-400">Accessibility</a></li>
-            </ul>
-          </div>
         </div>
 
         <div className="border-t-2 border-[#e51937] mt-12 pt-8 text-center">
