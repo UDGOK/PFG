@@ -129,40 +129,40 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <div className="relative">
-            <button 
+      <div className={`md:hidden w-full bg-white ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+        <div className="px-4 pt-4 pb-6 space-y-3">
+          <div className="relative text-center">
+            <button
               onClick={() => toggleDropdown('story')}
-              className="w-full text-left text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
+              className="w-full text-center text-gray-900 hover:text-red-600 block px-4 py-3 rounded-md text-lg font-bold"
             >
               Our Story
             </button>
             {activeDropdown === 'story' && (
-              <div className="pl-4">
-                <Link href="/our-story/history" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+              <div className="bg-gray-50 py-2 rounded-md">
+                <Link href="/our-story/history" className="block px-4 py-3 text-gray-700 hover:text-red-600 text-lg font-bold">
                   History
                 </Link>
-                <Link href="/leadership" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+                <Link href="/leadership" className="block px-4 py-3 text-gray-700 hover:text-red-600 text-lg font-bold">
                   Leadership
                 </Link>
               </div>
             )}
           </div>
 
-          <div className="relative">
-            <button 
+          <div className="relative text-center">
+            <button
               onClick={() => toggleDropdown('locations')}
-              className="w-full text-left text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
+              className="w-full text-center text-gray-900 hover:text-red-600 block px-4 py-3 rounded-md text-lg font-bold"
             >
               Locations
             </button>
             {activeDropdown === 'locations' && (
-              <div className="pl-4">
-                <Link href="/locations" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+              <div className="bg-gray-50 py-2 rounded-md">
+                <Link href="/locations" className="block px-4 py-3 text-gray-700 hover:text-red-600 text-lg font-bold">
                   Find a Store
                 </Link>
-                <Link href="/upcoming-stores" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+                <Link href="/upcoming-stores" className="block px-4 py-3 text-gray-700 hover:text-red-600 text-lg font-bold">
                   Upcoming Stores
                 </Link>
               </div>
@@ -171,21 +171,21 @@ export default function Navigation() {
 
           <Link
             href="/careers"
-            className="text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
+            className="text-gray-900 hover:text-red-600 block px-4 py-3 rounded-md text-lg font-bold text-center"
           >
             Careers
           </Link>
 
           <Link
             href="/news"
-            className="text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
+            className="text-gray-900 hover:text-red-600 block px-4 py-3 rounded-md text-lg font-bold text-center"
           >
             News
           </Link>
 
           <Link
             href="/contact"
-            className="text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
+            className="text-gray-900 hover:text-red-600 block px-4 py-3 rounded-md text-lg font-bold text-center"
           >
             Contact
           </Link>
