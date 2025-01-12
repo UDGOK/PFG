@@ -109,8 +109,23 @@ export default function LocationsPage() {
           setLoading(false)
         },
         (error: GeolocationPositionError) => {
-          if (error) {}
-          setErrorMessage('Unable to retrieve your location. Please enable location services.')
+          if (error) {
+            let message = 'Unable to retrieve your location. '
+            switch(error.code) {
+              case error.PERMISSION_DENIED:
+                message += 'Please enable location permissions in your browser settings.'
+                break
+              case error.POSITION_UNAVAILABLE:
+                message += 'Location information is unavailable.'
+                break
+              case error.TIMEOUT:
+                message += 'The request to get your location timed out.'
+                break
+              default:
+                message += 'An unknown error occurred.'
+            }
+            setErrorMessage(message)
+          }
           setLoading(false)
           setSortedLocations(LOCATIONS)
         },
