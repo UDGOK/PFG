@@ -8,9 +8,14 @@ import { useState, useEffect } from "react"
 
 export default function Home() {
   const [showCookieConsent, setShowCookieConsent] = useState(false)
+  const [email, setEmail] = useState("")
+  const [subscriptionStatus, setSubscriptionStatus] = useState<{
+    message?: string;
+    error?: string;
+  }>({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   useEffect(() => {
-    // Check if user has already made a choice
     const cookieChoice = localStorage.getItem('cookieConsent')
     if (!cookieChoice) {
       setShowCookieConsent(true)
@@ -19,12 +24,42 @@ export default function Home() {
 
   const handleCookieChoice = (accept: boolean) => {
     if (accept) {
-      // Here you would initialize your cookie-based tracking/analytics
       localStorage.setItem('cookieConsent', 'accepted')
     } else {
       localStorage.setItem('cookieConsent', 'rejected')
     }
     setShowCookieConsent(false)
+  }
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubscriptionStatus({})
+
+    try {
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      const data = await response.json()
+
+      if (response.ok) {
+        setSubscriptionStatus({ message: data.message })
+        setEmail('')
+      } else {
+        setSubscriptionStatus({ error: data.error })
+      }
+    } catch {
+      setSubscriptionStatus({
+        error: 'An error occurred. Please try again later.',
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -162,16 +197,37 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-white mb-4">Stay Connected</h2>
           <p className="text-white mb-8">Get the latest deals and updates</p>
           <div className="max-w-md mx-auto">
-            <div className="flex">
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-1 p-3 rounded-l-lg focus:outline-none"
-              />
-              <button className="bg-white text-primary px-6 py-3 rounded-r-lg font-semibold">
-                Subscribe
-              </button>
-            </div>
+            <form onSubmit={handleNewsletterSubmit} className="space-y-4">
+              <div className="flex">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 p-3 rounded-l-lg focus:outline-none"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`bg-white text-primary px-6 py-3 rounded-r-lg font-semibold hover:bg-gray-100 transition-colors ${
+                    isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
+                >
+                  {isSubmitting ? 'Subscribing...' : 'Subscribe'}
+                </button>
+              </div>
+              {subscriptionStatus.message && (
+                <p className="text-sm text-white bg-green-600 p-2 rounded">
+                  {subscriptionStatus.message}
+                </p>
+              )}
+              {subscriptionStatus.error && (
+                <p className="text-sm text-white bg-red-600 p-2 rounded">
+                  {subscriptionStatus.error}
+                </p>
+              )}
+            </form>
           </div>
         </div>
       </section>
