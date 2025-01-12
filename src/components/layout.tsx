@@ -1,5 +1,4 @@
 import { ReactNode } from "react"
-import Link from "next/link"
 import Navigation from "./navigation"
 import Footer from "./footer"
 import AnnouncementBanner from "./announcement-banner"
@@ -12,20 +11,10 @@ export default function Layout({ children }: LayoutProps) {
   return (
     <div className="flex flex-col min-h-screen relative">
       {/* Header */}
-      <div className="fixed top-0 left-0 right-0 z-50 bg-white">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white mb-8">
         {/* Announcement Banner */}
-        <AnnouncementBanner />
+        <AnnouncementBanner className="mb-8" />
         
-        {/* Find a Store */}
-        <div className="bg-white text-gray-800 shadow-sm">
-          <div className="container mx-auto px-4">
-            <div className="flex justify-end py-1">
-              <Link href="/locations" className="text-sm hover:text-[#e51937] transition-colors duration-200">
-                Find a Store
-              </Link>
-            </div>
-          </div>
-        </div>
 
         {/* Navigation */}
         <Navigation />

@@ -2,7 +2,11 @@
 
 import { useState, useEffect } from "react"
 
-export default function AnnouncementBanner() {
+interface AnnouncementBannerProps {
+  className?: string;
+}
+
+export default function AnnouncementBanner({ className }: AnnouncementBannerProps) {
   const [isVisible, setIsVisible] = useState(true)
   const [position, setPosition] = useState(0)
   const [oilPrice, setOilPrice] = useState<string | null>(null)
@@ -91,7 +95,7 @@ export default function AnnouncementBanner() {
   ].filter(Boolean).join(" | ");
 
   return (
-    <div className="bg-[#e51937] h-7 flex items-center justify-between overflow-hidden relative">
+    <div className={`bg-[#e51937] h-7 flex items-center justify-between overflow-hidden relative ${className || ''}`}>
       <div 
         className="whitespace-nowrap text-white text-sm font-medium"
         style={{ 

@@ -65,7 +65,7 @@ export default function Navigation() {
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8" onMouseLeave={closeAllDropdowns}>
+          <div className="hidden md:flex items-center space-x-6" onMouseLeave={closeAllDropdowns}>
             <div className="relative group">
               <button 
                 onClick={() => toggleDropdown('story')}
@@ -130,6 +130,20 @@ export default function Navigation() {
               className="text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               Contact
+            </Link>
+            <Link
+              href="/locations"
+              className="flex items-center px-4 py-2 text-white bg-red-600 rounded-full hover:bg-red-700 transition-colors duration-200 shadow-md hover:shadow-lg transform hover:scale-105"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 mr-2"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
+              </svg>
+              Find a Store
             </Link>
           </div>
         </div>
