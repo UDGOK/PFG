@@ -24,6 +24,16 @@ export default function Footer() {
             </ul>
           </div>
 
+          {/* Legal */}
+          <div>
+            <h3 className="text-lg font-bold mb-4">Legal</h3>
+            <ul className="space-y-2">
+              <li><a href="/privacy-policy" className="hover:text-[#e51937] transition-colors duration-200">Privacy Policy</a></li>
+              <li><a href="/terms-of-use" className="hover:text-[#e51937] transition-colors duration-200">Terms of Use</a></li>
+              <li><a href="/accessibility" className="hover:text-[#e51937] transition-colors duration-200">Accessibility</a></li>
+            </ul>
+          </div>
+
           {/* Social Media */}
           <div>
             <h3 className="text-lg font-bold mb-4">Follow Us</h3>
