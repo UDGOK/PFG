@@ -68,6 +68,22 @@ const LOCATIONS: Location[] = [
     coords: { lat: 35.9423, lng: -95.8868 },
     phone: "Coming Soon",
     image: "/images/hero/15911-South-Memorial.jpg"
+  },
+  {
+    name: "Perfect Food & Gas",
+    address: "1601 S Main St, Sapulpa, OK 74066",
+    hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
+    coords: { lat: 36.0771, lng: -96.1142 },
+    phone: "Tel: 918-227-9799",
+    image: "/images/hero/placeholder.svg"
+  },
+  {
+    name: "Perfect Food & Gas",
+    address: "2749 E Admiral Pl, Tulsa, OK 74110",
+    hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
+    coords: { lat: 36.1575, lng: -95.9520 },
+    phone: "Tel: Coming Soon",
+    image: "/images/hero/placeholder.svg"
   }
 ]
 
