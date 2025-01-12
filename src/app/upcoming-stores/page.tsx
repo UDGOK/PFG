@@ -2,12 +2,13 @@
 
 import Image from "next/image"
 import Layout from "@/components/layout"
+import { useState, useEffect } from "react"
 
 interface Location {
   name: string
   address: string
   openingDate: string
-  image?: string
+  images: string[]
 }
 
 const UPCOMING_LOCATIONS: Location[] = [
@@ -15,17 +16,47 @@ const UPCOMING_LOCATIONS: Location[] = [
     name: "Perfect Food & Gas",
     address: "15911 S. Memorial Drive, Bixby, OK 74008",
     openingDate: "Coming Fall 2025",
-    image: "/images/hero/placeholder.svg"
+    images: [
+      "/images/hero/15911-South-Memorial.jpg",
+      "/images/hero/perfect-fresh-bakery.jpeg",
+      "/images/hero/inside-perfect-food.jpeg",
+      "/images/hero/sinclair-fuel.jpeg"
+    ]
   },
   {
     name: "Perfect Food & Gas",
     address: "Haskell, Oklahoma",
     openingDate: "Coming Soon",
-    image: "/images/hero/placeholder.svg"
+    images: ["/images/hero/placeholder.svg"]
   }
 ]
 
 export default function UpcomingStoresPage() {
+  const [currentImageIndexes, setCurrentImageIndexes] = useState<{ [key: string]: number }>({});
+
+  useEffect(() => {
+    // Initialize image indexes
+    const initialIndexes = UPCOMING_LOCATIONS.reduce((acc, location) => {
+      acc[location.address] = 0;
+      return acc;
+    }, {} as { [key: string]: number });
+    setCurrentImageIndexes(initialIndexes);
+  }, []);
+
+  const nextImage = (address: string, maxIndex: number) => {
+    setCurrentImageIndexes(prev => ({
+      ...prev,
+      [address]: (prev[address] + 1) % maxIndex
+    }));
+  };
+
+  const prevImage = (address: string, maxIndex: number) => {
+    setCurrentImageIndexes(prev => ({
+      ...prev,
+      [address]: (prev[address] - 1 + maxIndex) % maxIndex
+    }));
+  };
+
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
@@ -34,15 +65,49 @@ export default function UpcomingStoresPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {UPCOMING_LOCATIONS.map((location, index) => (
             <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden border-2 border-red-500">
-              <div className="relative h-48 w-full">
+              <div className="relative h-48 w-full group">
                 <Image
-                  src={location.image || "/images/hero/placeholder.svg"}
+                  src={location.images[currentImageIndexes[location.address] || 0]}
                   alt={location.name}
                   className="object-cover"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority={index === 0}
                 />
+                {location.images.length > 1 && (
+                  <>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        prevImage(location.address, location.images.length);
+                      }}
+                      className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                    >
+                      ←
+                    </button>
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        nextImage(location.address, location.images.length);
+                      }}
+                      className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                    >
+                      →
+                    </button>
+                    <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                      {location.images.map((_, dotIndex) => (
+                        <div
+                          key={dotIndex}
+                          className={`h-2 w-2 rounded-full ${
+                            dotIndex === currentImageIndexes[location.address]
+                              ? 'bg-white'
+                              : 'bg-gray-400'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  </>
+                )}
               </div>
               <div className="p-6">
                 <div className="bg-red-500 text-white px-3 py-1 rounded-full inline-block mb-4">
@@ -56,5 +121,5 @@ export default function UpcomingStoresPage() {
         </div>
       </div>
     </Layout>
-  )
+  );
 }

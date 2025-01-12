@@ -67,7 +67,7 @@ const LOCATIONS: Location[] = [
     hours: "Coming Fall 2025",
     coords: { lat: 35.9423, lng: -95.8868 },
     phone: "Coming Soon",
-    image: "https://raw.githubusercontent.com/UDGOK/PFG/main/public/images/hero/bixby.jpg"
+    image: "/images/hero/15911-South-Memorial.jpg"
   }
 ]
 
