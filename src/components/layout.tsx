@@ -18,13 +18,6 @@ export default function Layout({ children }: LayoutProps) {
               <Link href="/locations" className="hover:text-primary/80">
                 Find a Store
               </Link>
-              <div className="relative">
-                <input
-                  type="text"
-                  placeholder="Search..."
-                  className="bg-white/20 rounded-full px-4 py-1 text-sm w-48 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
-                />
-              </div>
             </div>
           </div>
         </div>

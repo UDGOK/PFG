@@ -170,7 +170,12 @@ const LocationsPage: React.FC = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {sortedLocations.map((location, index) => (
-            <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden">
+            <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden relative">
+              {location.address.includes("15911 S. Memorial Drive") && (
+                <div className="absolute top-5 -right-8 bg-red-600 text-white py-1 px-8 transform rotate-45 z-10 shadow-lg">
+                  Opening Soon
+                </div>
+              )}
               <div className="relative h-48 w-full">
                 <Image
                   src={location.image}

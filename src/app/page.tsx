@@ -8,12 +8,13 @@ export default function Home() {
   return (
     <Layout>
       <section className="relative h-[600px] md:h-[800px]">
-        <Image
-          src="/images/hero/hero-image.jpg"
-          alt="Hero Image"
-          fill
-          className="object-cover"
-          priority
+        <video
+          src="/videos/people-pump-gas.mp4"
+          className="object-cover w-full h-full"
+          autoPlay
+          loop
+          muted
+          playsInline
         />
         <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
           <div className="text-center text-white max-w-4xl px-4">
@@ -43,7 +44,14 @@ export default function Home() {
           <h2 className="text-3xl font-bold text-center mb-8">Featured Products</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
-              <div className="h-48 bg-gray-200 mb-4 rounded-md"></div>
+              <Image
+                src="/images/hero/perfect-fresh-bakery.jpeg"
+                alt="Fresh Bakery"
+                width={400}
+                height={400}
+                className="w-full h-48 object-cover rounded-md"
+                style={{ height: 'auto' }}
+              />
               <h3 className="text-xl font-semibold mb-2">Fresh Bakery</h3>
               <p className="text-gray-600">Daily baked goods made fresh</p>
             </div>

@@ -97,8 +97,8 @@ export default function Navigation() {
                   <Link href="/locations" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Find a Store
                   </Link>
-                  <Link href="/locations/new-stores" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    New Stores
+                  <Link href="/upcoming-stores" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                    Upcoming Stores
                   </Link>
                 </div>
               )}
@@ -174,8 +174,8 @@ export default function Navigation() {
                 <Link href="/locations" className="block px-3 py-2 text-gray-700 hover:text-red-600">
                   Find a Store
                 </Link>
-                <Link href="/locations/new-stores" className="block px-3 py-2 text-gray-700 hover:text-red-600">
-                  New Stores
+                <Link href="/upcoming-stores" className="block px-3 py-2 text-gray-700 hover:text-red-600">
+                  Upcoming Stores
                 </Link>
               </div>
             )}
