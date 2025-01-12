@@ -177,6 +177,13 @@ export default function Navigation() {
           </Link>
 
           <Link
+            href="/news"
+            className="text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
+          >
+            News
+          </Link>
+
+          <Link
             href="/contact"
             className="text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
           >
