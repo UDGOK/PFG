@@ -104,30 +104,18 @@ export default function Navigation() {
               )}
             </div>
 
-            <div className="relative group">
-              <button 
-                onClick={() => toggleDropdown('rewards')}
-                className={`text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform ${activeDropdown === 'rewards' ? 'text-red-600' : ''}`}
-              >
-                Rewards
-              </button>
-              {activeDropdown === 'rewards' && (
-                <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1">
-                  <Link href="/rewards/sign-up" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Sign Up
-                  </Link>
-                  <Link href="/rewards/benefits" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Benefits
-                  </Link>
-                </div>
-              )}
-            </div>
-
             <Link
               href="/careers"
               className="text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               Careers
+            </Link>
+
+            <Link
+              href="/news"
+              className="text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+            >
+              News
             </Link>
 
             <Link
@@ -176,25 +164,6 @@ export default function Navigation() {
                 </Link>
                 <Link href="/upcoming-stores" className="block px-3 py-2 text-gray-700 hover:text-red-600">
                   Upcoming Stores
-                </Link>
-              </div>
-            )}
-          </div>
-
-          <div className="relative">
-            <button 
-              onClick={() => toggleDropdown('rewards')}
-              className="w-full text-left text-gray-900 hover:text-red-600 block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Rewards
-            </button>
-            {activeDropdown === 'rewards' && (
-              <div className="pl-4">
-                <Link href="/rewards/sign-up" className="block px-3 py-2 text-gray-700 hover:text-red-600">
-                  Sign Up
-                </Link>
-                <Link href="/rewards/benefits" className="block px-3 py-2 text-gray-700 hover:text-red-600">
-                  Benefits
                 </Link>
               </div>
             )}
