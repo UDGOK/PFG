@@ -27,7 +27,7 @@ export default function Navigation() {
           <div className="flex items-center">
             <Link href="/" className="flex items-center h-16">
               <Image
-                src="/pfgstores-new-logo.jpg"
+                src="/images/hero/Perfect-Logo-New.png"
                 alt="PFG Stores Logo"
                 width={240}
                 height={80}
