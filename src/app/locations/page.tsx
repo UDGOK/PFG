@@ -183,16 +183,6 @@ const LocationsPage: React.FC = () => {
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-8">Our Locations</h1>
 
-        {/* Traffic Map */}
-        <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-4">Live Traffic Map</h2>
-          <TrafficMap
-            center={[centerLat, centerLng]}
-            zoom={11}
-            locations={LOCATIONS}
-          />
-        </div>
-        
         {loading && (
           <div className="text-center py-8">
             <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900 mx-auto mb-4"></div>
@@ -251,6 +241,16 @@ const LocationsPage: React.FC = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Traffic Map */}
+        <div className="mt-12">
+          <h2 className="text-2xl font-semibold mb-4">Live Traffic Map</h2>
+          <TrafficMap
+            center={[centerLat, centerLng]}
+            zoom={11}
+            locations={LOCATIONS}
+          />
         </div>
       </div>
     </Layout>
