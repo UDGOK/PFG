@@ -3,6 +3,17 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import Layout from "@/components/layout"
+import dynamic from 'next/dynamic'
+
+// Dynamically import the TrafficMap component with no SSR
+const TrafficMap = dynamic(() => import('@/components/traffic-map'), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[500px] bg-gray-100 rounded-lg flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-red-600"></div>
+    </div>
+  )
+})
 
 interface Coordinates {
   lat: number
@@ -19,7 +30,6 @@ interface Location {
   distance?: number
 }
 
-// Move LOCATIONS array outside the component
 const LOCATIONS: Location[] = [
   {
     name: "Perfect Food & Gas",
@@ -27,7 +37,7 @@ const LOCATIONS: Location[] = [
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.1331, lng: -95.9685 },
     phone: "Tel: 918-742-0322",
-    image: "https://raw.githubusercontent.com/UDGOK/PFG/main/public/images/hero/harvard.jpg"
+    image: "/images/hero/harvard.jpg"
   },
   {
     name: "Perfect Food & Gas",
@@ -35,7 +45,7 @@ const LOCATIONS: Location[] = [
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.0486, lng: -95.8885 },
     phone: "Tel: 918-499-1562",
-    image: "https://raw.githubusercontent.com/UDGOK/PFG/main/public/images/hero/perfect-sheridan.jpg"
+    image: "/images/hero/perfect-sheridan.jpg"
   },
   {
     name: "Perfect Food & Gas",
@@ -43,7 +53,7 @@ const LOCATIONS: Location[] = [
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.0897, lng: -95.8881 },
     phone: "Tel: 918-619-6538",
-    image: "https://raw.githubusercontent.com/UDGOK/PFG/main/public/images/hero/perfect-51.jpg"
+    image: "/images/hero/image-coming-soon.svg"
   },
   {
     name: "Perfect Food & Gas",
@@ -51,7 +61,7 @@ const LOCATIONS: Location[] = [
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.2219, lng: -95.8314 },
     phone: "Tel: 918-779-7373",
-    image: "https://raw.githubusercontent.com/UDGOK/PFG/main/public/images/hero/perfect-garnett.jpg"
+    image: "/images/hero/perfect-garnett.jpg"
   },
   {
     name: "Perfect Food & Gas",
@@ -59,7 +69,7 @@ const LOCATIONS: Location[] = [
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.0678, lng: -95.8889 },
     phone: "Tel: 918-367-2382",
-    image: "https://raw.githubusercontent.com/UDGOK/PFG/main/public/images/hero/perfect-145th.jpg"
+    image: "/images/hero/perfect-145th.jpg"
   },
   {
     name: "Perfect Food & Gas",
@@ -71,18 +81,18 @@ const LOCATIONS: Location[] = [
   },
   {
     name: "Perfect Food & Gas",
-    address: "1601 S Main St, Sapulpa, OK 74066",
-    hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
-    coords: { lat: 36.0771, lng: -96.1142 },
-    phone: "Tel: 918-227-9799",
-    image: "/images/hero/image-coming-soon.svg"
-  },
-  {
-    name: "Perfect Food & Gas",
     address: "2749 E Admiral Pl, Tulsa, OK 74110",
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.1575, lng: -95.9520 },
     phone: "Tel: Coming Soon",
+    image: "/images/hero/image-coming-soon.svg"
+  },
+  {
+    name: "Perfect Food & Gas",
+    address: "1601 S Main St, Sapulpa, OK 74066",
+    hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
+    coords: { lat: 36.0771, lng: -96.1142 },
+    phone: "Tel: 918-227-9799",
     image: "/images/hero/image-coming-soon.svg"
   }
 ]
@@ -133,24 +143,22 @@ const LocationsPage: React.FC = () => {
           )
           setLoading(false)
         },
-        (error: GeolocationPositionError) => {
-          if (error) {
-            let message = 'Unable to retrieve your location. '
-            switch(error.code) {
-              case error.PERMISSION_DENIED:
-                message += 'Please enable location permissions in your browser settings.'
-                break
-              case error.POSITION_UNAVAILABLE:
-                message += 'Location information is unavailable.'
-                break
-              case error.TIMEOUT:
-                message += 'The request to get your location timed out.'
-                break
-              default:
-                message += 'An unknown error occurred.'
-            }
-            setErrorMessage(message)
+        (error) => {
+          let message = 'Unable to retrieve your location. '
+          switch(error.code) {
+            case error.PERMISSION_DENIED:
+              message += 'Please enable location permissions in your browser settings.'
+              break
+            case error.POSITION_UNAVAILABLE:
+              message += 'Location information is unavailable.'
+              break
+            case error.TIMEOUT:
+              message += 'The request to get your location timed out.'
+              break
+            default:
+              message += 'An unknown error occurred.'
           }
+          setErrorMessage(message)
           setLoading(false)
           setSortedLocations(LOCATIONS)
         },
@@ -166,22 +174,24 @@ const LocationsPage: React.FC = () => {
     }
   }, [])
 
+  // Calculate center point of all locations
+  const centerLat = LOCATIONS.reduce((sum, loc) => sum + loc.coords.lat, 0) / LOCATIONS.length
+  const centerLng = LOCATIONS.reduce((sum, loc) => sum + loc.coords.lng, 0) / LOCATIONS.length
+
   return (
     <Layout>
-      <div className="relative h-96 w-full mb-12">
-        <video
-          src="/videos/people-at-pump.mp4"
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full h-full object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-          <h1 className="text-5xl font-bold text-white">Our Locations</h1>
-        </div>
-      </div>
       <div className="container mx-auto px-4 py-8">
+        <h1 className="text-3xl font-bold mb-8">Our Locations</h1>
+
+        {/* Traffic Map */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-semibold mb-4">Live Traffic Map</h2>
+          <TrafficMap
+            center={[centerLat, centerLng]}
+            zoom={11}
+            locations={LOCATIONS}
+          />
+        </div>
         
         {loading && (
           <div className="text-center py-8">

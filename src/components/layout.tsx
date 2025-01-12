@@ -10,9 +10,9 @@ interface LayoutProps {
 
 export default function Layout({ children }: LayoutProps) {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen relative">
       {/* Header */}
-      <div className="fixed top-0 left-0 right-0 z-[55]">
+      <div className="fixed top-0 left-0 right-0 z-50 bg-white">
         {/* Announcement Banner */}
         <AnnouncementBanner />
         
@@ -26,15 +26,13 @@ export default function Layout({ children }: LayoutProps) {
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Navigation */}
-      <div className="mt-48">
+        {/* Navigation */}
         <Navigation />
       </div>
 
       {/* Main Content */}
-      <main className="flex-grow">
+      <main className="flex-grow pt-40">
         {children}
       </main>
 

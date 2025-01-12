@@ -21,11 +21,11 @@ export default function Navigation() {
   }
 
   return (
-    <nav className="bg-white shadow-sm fixed top-24 left-0 right-0 z-[50]">
+    <nav className="bg-white shadow-sm border-b-2 border-red-600">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 border-b-2 border-red-600">
+        <div className="flex justify-between h-16">
           <div className="flex items-center">
-            <Link href="/" className="flex items-center h-20 -mt-2">
+            <Link href="/" className="flex items-center h-16">
               <Image
                 src="/pfgstores-new-logo.jpg"
                 alt="PFG Stores Logo"
@@ -132,7 +132,7 @@ export default function Navigation() {
       <div className={`md:hidden w-full bg-white ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
         <div className="px-4 pt-4 pb-6 space-y-3">
           <div className="relative text-center">
-            <button
+            <button 
               onClick={() => toggleDropdown('story')}
               className="w-full text-center text-gray-900 hover:text-red-600 block px-4 py-3 rounded-md text-lg font-bold"
             >
@@ -151,7 +151,7 @@ export default function Navigation() {
           </div>
 
           <div className="relative text-center">
-            <button
+            <button 
               onClick={() => toggleDropdown('locations')}
               className="w-full text-center text-gray-900 hover:text-red-600 block px-4 py-3 rounded-md text-lg font-bold"
             >
