@@ -119,6 +119,13 @@ export default function Navigation() {
             </Link>
 
             <Link
+              href="/amenities"
+              className="text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+            >
+              Amenities
+            </Link>
+
+            <Link
               href="/contact"
               className="text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
@@ -181,6 +188,13 @@ export default function Navigation() {
             className="text-gray-900 hover:text-red-600 block px-4 py-3 rounded-md text-lg font-bold text-center"
           >
             News
+          </Link>
+
+          <Link
+            href="/amenities"
+            className="text-gray-900 hover:text-red-600 block px-4 py-3 rounded-md text-lg font-bold text-center"
+          >
+            Amenities
           </Link>
 
           <Link
