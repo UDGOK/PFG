@@ -75,7 +75,7 @@ export default function TrafficMap({ center, zoom = 12, locations }: TrafficMapP
   }, [center, zoom, locations])
 
   return (
-    <div className="relative w-full h-[500px] rounded-lg overflow-hidden shadow-lg">
+    <div className="relative w-full h-[500px] rounded-lg overflow-hidden shadow-lg z-0">
       <div ref={mapContainerRef} className="w-full h-full" />
       <style jsx global>{`
         .marker-content {
@@ -96,6 +96,12 @@ export default function TrafficMap({ center, zoom = 12, locations }: TrafficMapP
         }
         .custom-popup .leaflet-popup-content {
           margin: 0;
+        }
+        .leaflet-control-container {
+          z-index: 1 !important;
+        }
+        .leaflet-popup {
+          z-index: 2 !important;
         }
       `}</style>
     </div>

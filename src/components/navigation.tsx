@@ -74,7 +74,7 @@ export default function Navigation() {
                 Our Story
               </button>
               {activeDropdown === 'story' && (
-                <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1">
+                <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 z-50">
                   <Link href="/our-story/history" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     History
                   </Link>
@@ -93,7 +93,7 @@ export default function Navigation() {
                 Locations
               </button>
               {activeDropdown === 'locations' && (
-                <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1">
+                <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 z-50">
                   <Link href="/locations" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                     Find a Store
                   </Link>
@@ -129,7 +129,7 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden w-full bg-white ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
+      <div className={`md:hidden w-full bg-white z-[100] ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
         <div className="px-4 pt-4 pb-6 space-y-3">
           <div className="relative text-center">
             <button 
