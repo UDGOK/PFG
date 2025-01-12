@@ -34,7 +34,7 @@ export default function ChelseaStoreArticle() {
           </p>
 
           <p className="mb-6">
-            The donation program is expected to make a significant impact on the local police department's resources, helping them better serve and protect the Chelsea community. This partnership between Perfect Food And Gas and local law enforcement exemplifies how businesses can play a vital role in supporting essential community services.
+            The donation program is expected to make a significant impact on the local police department&apos;s resources, helping them better serve and protect the Chelsea community. This partnership between Perfect Food And Gas and local law enforcement exemplifies how businesses can play a vital role in supporting essential community services.
           </p>
 
           <p>

@@ -22,7 +22,7 @@ export default function NewLocationArticle() {
 
         <div className="prose max-w-none">
           <p className="text-lg mb-6">
-            Perfect Food & Gas continues its expansion in Tulsa with the opening of its newest location at 14495 East 51st Street South. The store, which opened its doors in December 2023, marks another milestone in the company's commitment to serving the Tulsa community.
+            Perfect Food & Gas continues its expansion in Tulsa with the opening of its newest location at 14495 East 51st Street South. The store, which opened its doors in December 2023, marks another milestone in the company&apos;s commitment to serving the Tulsa community.
           </p>
           
           <p className="mb-6">
@@ -30,11 +30,11 @@ export default function NewLocationArticle() {
           </p>
 
           <p className="mb-6">
-            "We're excited to bring Perfect Food & Gas to East 51st Street," said a company spokesperson. "This location allows us to better serve our customers in East Tulsa and provide them with the convenience and quality they deserve."
+            &quot;We&apos;re excited to bring Perfect Food & Gas to East 51st Street,&quot; said a company spokesperson. &quot;This location allows us to better serve our customers in East Tulsa and provide them with the convenience and quality they deserve.&quot;
           </p>
 
           <p>
-            The new store, which can be reached at (918) 367-2382, represents Perfect Food & Gas's ongoing commitment to growth and community service in the Tulsa area. Customers are invited to visit the new location and experience the Perfect Food & Gas difference for themselves.
+            The new store, which can be reached at (918) 367-2382, represents Perfect Food & Gas&apos;s ongoing commitment to growth and community service in the Tulsa area. Customers are invited to visit the new location and experience the Perfect Food & Gas difference for themselves.
           </p>
         </div>
       </div>
