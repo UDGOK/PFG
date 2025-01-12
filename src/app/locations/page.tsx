@@ -75,7 +75,7 @@ const LOCATIONS: Location[] = [
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.0771, lng: -96.1142 },
     phone: "Tel: 918-227-9799",
-    image: "/images/hero/placeholder.svg"
+    image: "/images/hero/image-coming-soon.svg"
   },
   {
     name: "Perfect Food & Gas",
@@ -83,7 +83,7 @@ const LOCATIONS: Location[] = [
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.1575, lng: -95.9520 },
     phone: "Tel: Coming Soon",
-    image: "/images/hero/placeholder.svg"
+    image: "/images/hero/image-coming-soon.svg"
   }
 ]
 

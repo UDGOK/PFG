@@ -27,7 +27,7 @@ const UPCOMING_LOCATIONS: Location[] = [
     name: "Perfect Food & Gas",
     address: "Haskell, Oklahoma",
     openingDate: "Coming Soon",
-    images: ["/images/hero/placeholder.svg"]
+    images: ["/images/hero/image-coming-soon.svg"]
   }
 ]
 
