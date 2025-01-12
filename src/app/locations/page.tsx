@@ -19,6 +19,7 @@ interface Location {
   distance?: number
 }
 
+// Move LOCATIONS array outside the component
 const LOCATIONS: Location[] = [
   {
     name: "Perfect Food & Gas",
@@ -42,7 +43,7 @@ const LOCATIONS: Location[] = [
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.0897, lng: -95.8881 },
     phone: "Tel: 918-619-6538",
-    image: "/images/locations/51st.jpg"
+    image: "https://raw.githubusercontent.com/UDGOK/PFG/main/public/images/hero/perfect-51.jpg"
   },
   {
     name: "Perfect Food & Gas",
@@ -50,7 +51,7 @@ const LOCATIONS: Location[] = [
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.2219, lng: -95.8314 },
     phone: "Tel: 918-779-7373",
-    image: "/images/locations/garnett.jpg"
+    image: "https://raw.githubusercontent.com/UDGOK/PFG/main/public/images/hero/perfect-garnett.jpg"
   },
   {
     name: "Perfect Food & Gas",
@@ -58,11 +59,19 @@ const LOCATIONS: Location[] = [
     hours: "Friday: 5:30 AM–11 PM, Saturday: 5:30 AM–11 PM, Sunday: 7 AM–10 PM, Monday-Thursday: 5:30 AM–11 PM",
     coords: { lat: 36.0678, lng: -95.8889 },
     phone: "Tel: 918-367-2382",
-    image: "/images/locations/51st-south.jpg"
+    image: "https://raw.githubusercontent.com/UDGOK/PFG/main/public/images/hero/perfect-145th.jpg"
+  },
+  {
+    name: "Perfect Food & Gas",
+    address: "15911 S. Memorial Drive, Bixby, OK 74008",
+    hours: "Coming Fall 2025",
+    coords: { lat: 35.9423, lng: -95.8868 },
+    phone: "Coming Soon",
+    image: "https://raw.githubusercontent.com/UDGOK/PFG/main/public/images/hero/bixby.jpg"
   }
 ]
 
-function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: number) {
+const calculateDistance = (lat1: number, lon1: number, lat2: number, lon2: number) => {
   const R = 6371
   const dLat = (lat2 - lat1) * (Math.PI / 180)
   const dLon = (lon2 - lon1) * (Math.PI / 180)
@@ -77,9 +86,9 @@ function calculateDistance(lat1: number, lon1: number, lat2: number, lon2: numbe
   return kmDistance * 0.621371
 }
 
-export default function LocationsPage() {
+const LocationsPage: React.FC = () => {
   const [userLocation, setUserLocation] = useState<Coordinates | null>(null)
-  const [sortedLocations, setSortedLocations] = useState(LOCATIONS)
+  const [sortedLocations, setSortedLocations] = useState<Location[]>(LOCATIONS)
   const [loading, setLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
@@ -204,3 +213,5 @@ export default function LocationsPage() {
     </Layout>
   )
 }
+
+export default LocationsPage
