@@ -68,25 +68,6 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-6" onMouseLeave={closeAllDropdowns}>
             <div className="relative group">
               <button 
-                onClick={() => toggleDropdown('story')}
-                className={`text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform ${activeDropdown === 'story' ? 'text-red-600' : ''}`}
-              >
-                Our Story
-              </button>
-              {activeDropdown === 'story' && (
-                <div className="absolute mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 py-1 z-50">
-                  <Link href="/our-story/history" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    History
-                  </Link>
-                  <Link href="/leadership" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Leadership
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <div className="relative group">
-              <button 
                 onClick={() => toggleDropdown('locations')}
                 className={`text-gray-900 hover:text-red-600 relative after:absolute after:bottom-0 after:left-0 after:h-1 after:w-full after:bg-red-600 after:scale-x-0 hover:after:scale-x-100 after:transition-transform ${activeDropdown === 'locations' ? 'text-red-600' : ''}`}
               >
@@ -152,25 +133,6 @@ export default function Navigation() {
       {/* Mobile Menu */}
       <div className={`md:hidden w-full bg-white z-[100] ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
         <div className="px-4 pt-4 pb-6 space-y-3">
-          <div className="relative text-center">
-            <button 
-              onClick={() => toggleDropdown('story')}
-              className="w-full text-center text-gray-900 hover:text-red-600 block px-4 py-3 rounded-md text-lg font-bold"
-            >
-              Our Story
-            </button>
-            {activeDropdown === 'story' && (
-              <div className="bg-gray-50 py-2 rounded-md">
-                <Link href="/our-story/history" className="block px-4 py-3 text-gray-700 hover:text-red-600 text-lg font-bold">
-                  History
-                </Link>
-                <Link href="/leadership" className="block px-4 py-3 text-gray-700 hover:text-red-600 text-lg font-bold">
-                  Leadership
-                </Link>
-              </div>
-            )}
-          </div>
-
           <div className="relative text-center">
             <button 
               onClick={() => toggleDropdown('locations')}

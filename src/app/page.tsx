@@ -175,22 +175,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Promotions Section */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-8">Current Promotions</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[...Array(4)].map((_, i) => (
-              <div key={i} className="bg-white p-4 rounded-lg shadow-md">
-                <div className="h-40 bg-gray-200 mb-4 rounded-md"></div>
-                <h3 className="text-lg font-semibold mb-2">Promotion {i + 1}</h3>
-                <p className="text-gray-600">Special deals just for you</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Newsletter Section */}
       <section className="bg-primary py-16">
         <div className="container mx-auto px-4 text-center">
