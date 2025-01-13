@@ -25,9 +25,9 @@ const nextConfig = {
               default-src 'self';
               script-src 'self' 'unsafe-inline' 'unsafe-eval';
               style-src 'self' 'unsafe-inline';
-              img-src 'self' data: blob: https://*.openstreetmap.org https://*.tile.openstreetmap.org;
+              img-src 'self' data: blob: https://*.openstreetmap.org https://*.tile.openstreetmap.org https://*.openweathermap.org;
               font-src 'self';
-              connect-src 'self' https://*.openstreetmap.org https://*.tile.openstreetmap.org https://api.eia.gov;
+              connect-src 'self' https://*.openstreetmap.org https://*.tile.openstreetmap.org https://api.eia.gov https://api.openweathermap.org;
               frame-src 'self';
               media-src 'self';
             `.replace(/\s+/g, ' ').trim()
