@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button"
 import Layout from "@/components/layout"
 import { useState, useEffect } from "react"
 import Weather from "@/components/weather"
+import OilGasNews from "@/components/oil-gas-news"
 
 export default function Home() {
   const [showCookieConsent, setShowCookieConsent] = useState(false)
@@ -172,6 +173,20 @@ export default function Home() {
                 Whether you&apos;re fueling up for a road trip or just stopping by for a quick snack, Perfect Food & Gas is your go-to destination in Tulsa and beyond. Keep an eye out for more locations as the company continues to grow and serve the community with excellence.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Oil & Gas Market Section */}
+      <section className="py-16 bg-gradient-to-br from-yellow-50 via-white to-yellow-50">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="relative bg-white p-12 rounded-2xl shadow-xl border border-yellow-100">
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-5">
+              <div className="bg-yellow-600 text-white px-8 py-2 rounded-full text-sm tracking-wider uppercase">
+                Market Update
+              </div>
+            </div>
+            <OilGasNews />
           </div>
         </div>
       </section>
