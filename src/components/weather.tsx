@@ -3,15 +3,33 @@
 import { useEffect, useState } from 'react';
 
 interface WeatherData {
-  name: string;
-  main: {
-    temp: number;
-    humidity: number;
-  };
-  weather: {
-    description: string;
-    icon: string;
-  }[];
+  location: string;
+  temperature: number;
+  humidity: number;
+  description: string;
+  icon: string;
+}
+
+const weatherIcons: { [key: string]: string } = {
+  'clear': '☀️',
+  'mostly clear': '🌤️',
+  'partly cloudy': '⛅',
+  'mostly cloudy': '🌥️',
+  'cloudy': '☁️',
+  'rain': '🌧️',
+  'snow': '🌨️',
+  'thunderstorm': '⛈️',
+  'fog': '🌫️'
+};
+
+function getWeatherIcon(description: string): string {
+  const lowercaseDesc = description.toLowerCase();
+  for (const [key, icon] of Object.entries(weatherIcons)) {
+    if (lowercaseDesc.includes(key)) {
+      return icon;
+    }
+  }
+  return '🌡️'; // default icon
 }
 
 export default function Weather() {
@@ -24,25 +42,57 @@ export default function Weather() {
         async (position) => {
           try {
             const { latitude, longitude } = position.coords;
-            const response = await fetch(
-              `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
+            console.log('Fetching weather with coordinates:', { latitude, longitude });
+
+            // First, get the grid point from NWS API
+            const pointsResponse = await fetch(
+              `https://api.weather.gov/points/${latitude},${longitude}`,
+              {
+                headers: {
+                  'User-Agent': '(Perfect Food and Gas, contact@perfectfoodandgas.com)'
+                }
+              }
             );
-            
-            if (!response.ok) {
-              console.error('Weather API Error:', await response.text());
-              throw new Error(`Weather API returned ${response.status}`);
+
+            if (!pointsResponse.ok) {
+              throw new Error(`NWS API error: ${pointsResponse.status}`);
             }
-            
-            const data = await response.json();
-            if (data.cod && data.cod !== 200) {
-              console.error('Weather API Error:', data);
-              throw new Error(data.message || 'Weather API error');
+
+            const pointsData = await pointsResponse.json();
+            console.log('Points data:', pointsData);
+
+            // Then get the forecast using the grid endpoint
+            const forecastResponse = await fetch(
+              pointsData.properties.forecast,
+              {
+                headers: {
+                  'User-Agent': '(Perfect Food and Gas, contact@perfectfoodandgas.com)'
+                }
+              }
+            );
+
+            if (!forecastResponse.ok) {
+              throw new Error(`NWS API error: ${forecastResponse.status}`);
             }
-            
-            setWeather(data);
+
+            const forecastData = await forecastResponse.json();
+            console.log('Forecast data:', forecastData);
+
+            const currentPeriod = forecastData.properties.periods[0];
+            setWeather({
+              location: pointsData.properties.relativeLocation.properties.city,
+              temperature: currentPeriod.temperature,
+              humidity: currentPeriod.relativeHumidity?.value ?? 0,
+              description: currentPeriod.shortForecast,
+              icon: getWeatherIcon(currentPeriod.shortForecast)
+            });
           } catch (error) {
             console.error('Weather fetch error:', error);
-            setError('Unable to fetch weather data. Please try again later.');
+            let errorMessage = 'Unable to fetch weather data. ';
+            if (error instanceof Error) {
+              errorMessage += error.message;
+            }
+            setError(errorMessage);
           }
         },
         () => {
@@ -58,11 +108,13 @@ export default function Weather() {
     return (
       <div className="flex items-center justify-center p-4">
         {error ? (
-          <div className="text-red-600 text-center">
+          <div className="text-red-600 text-center p-4 bg-red-50 rounded-lg">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
             </svg>
-            <p>{error}</p>
+            <p className="font-medium mb-1">Weather Service Error</p>
+            <p className="text-sm text-red-500">{error}</p>
+            <p className="text-xs text-red-400 mt-2">Please check browser console for details</p>
           </div>
         ) : (
           <div className="text-blue-600 text-center">
@@ -81,23 +133,19 @@ export default function Weather() {
     <div className="bg-gradient-to-r from-blue-500 to-blue-600 p-6 rounded-lg shadow-lg text-white">
       <div className="flex items-center justify-between">
         <div className="flex-1">
-          <h2 className="text-2xl font-bold mb-1">{weather.name}</h2>
+          <h2 className="text-2xl font-bold mb-1">{weather.location}</h2>
           <div className="flex items-center">
-            <img
-              src={`https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`}
-              alt={weather.weather[0].description}
-              className="w-16 h-16 -ml-4 -my-2"
-            />
-            <p className="text-lg capitalize">{weather.weather[0].description}</p>
+            <span className="text-4xl mr-2">{weather.icon}</span>
+            <p className="text-lg">{weather.description}</p>
           </div>
         </div>
         <div className="text-right">
-          <p className="text-4xl font-bold mb-1">{Math.round(weather.main.temp)}°F</p>
+          <p className="text-4xl font-bold mb-1">{Math.round(weather.temperature)}°F</p>
           <div className="flex items-center justify-end space-x-2 text-sm">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
             </svg>
-            <span>{weather.main.humidity}% Humidity</span>
+            <span>{Math.round(weather.humidity)}% Humidity</span>
           </div>
         </div>
       </div>

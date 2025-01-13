@@ -2,6 +2,7 @@
 const nextConfig = {
   env: {
     NEXT_PUBLIC_EIA_API_KEY: process.env.EIA_API_KEY,
+    NEXT_PUBLIC_OPENWEATHER_API_KEY: process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY,
   },
   images: {
     remotePatterns: [
@@ -27,7 +28,7 @@ const nextConfig = {
               style-src 'self' 'unsafe-inline';
               img-src 'self' data: blob: https://*.openstreetmap.org https://*.tile.openstreetmap.org https://*.openweathermap.org;
               font-src 'self';
-              connect-src 'self' https://*.openstreetmap.org https://*.tile.openstreetmap.org https://api.eia.gov https://api.openweathermap.org;
+              connect-src 'self' https://*.openstreetmap.org https://*.tile.openstreetmap.org https://api.eia.gov https://api.weather.gov;
               frame-src 'self';
               media-src 'self';
             `.replace(/\s+/g, ' ').trim()
