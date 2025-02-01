@@ -35,6 +35,7 @@ export default function AnnouncementBanner({ className }: AnnouncementBannerProp
 
     // Fetch crude oil and diesel prices
     const fetchPrices = async () => {
+      console.log('API Key:', process.env.NEXT_PUBLIC_EIA_API_KEY); // Debug log
       try {
         // Fetch crude oil price
         const oilResponse = await fetch(
@@ -63,8 +64,11 @@ export default function AnnouncementBanner({ className }: AnnouncementBannerProp
         }
       } catch (error) {
         console.error('Error fetching prices:', error);
-        setOilPrice('⛽ WTI Crude: Loading...');
-        setDieselPrice('🚛 Diesel: Loading...');
+        if (error instanceof Error) {
+          console.error('Error message:', error.message);
+        }
+        setOilPrice('⛽ WTI Crude: Error loading');
+        setDieselPrice('🚛 Diesel: Error loading');
       }
     };
 
